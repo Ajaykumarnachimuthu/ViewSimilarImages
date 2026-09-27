@@ -1,0 +1,381 @@
+{
+  "categories": [
+    {
+      "id": "c1111111-1111-1111-1111-111111111111",
+      "name": "Footwear",
+      "slug": "footwear",
+      "description": "Premium sneakers, boots, and athletic footwear",
+      "icon": "Footprints"
+    },
+    {
+      "id": "c2222222-2222-2222-2222-222222222222",
+      "name": "Outerwear & Apparel",
+      "slug": "outerwear-apparel",
+      "description": "Technical jackets, hoodies, knitwear, and everyday essentials",
+      "icon": "Shirt"
+    },
+    {
+      "id": "c3333333-3333-3333-3333-333333333333",
+      "name": "Electronics & Audio",
+      "slug": "electronics-audio",
+      "description": "Studio headphones, smart devices, and high-fidelity acoustics",
+      "icon": "Headphones"
+    },
+    {
+      "id": "c4444444-4444-4444-4444-444444444444",
+      "name": "Watches & Accessories",
+      "slug": "watches-accessories",
+      "description": "Chronographs, leather wallets, optical eyewear, and bags",
+      "icon": "Watch"
+    },
+    {
+      "id": "c5555555-5555-5555-5555-555555555555",
+      "name": "Home & Living",
+      "slug": "home-living",
+      "description": "Architectural lighting, ergonomic seating, and ceramic decor",
+      "icon": "Armchair"
+    }
+  ],
+  "brands": [
+    {
+      "id": "b1111111-1111-1111-1111-111111111111",
+      "name": "Aether Studio",
+      "slug": "aether-studio",
+      "logo_url": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=100&q=80"
+    },
+    {
+      "id": "b2222222-2222-2222-2222-222222222222",
+      "name": "Nike",
+      "slug": "nike",
+      "logo_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100&q=80"
+    },
+    {
+      "id": "b3333333-3333-3333-3333-333333333333",
+      "name": "Sony Audio",
+      "slug": "sony-audio",
+      "logo_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80"
+    },
+    {
+      "id": "b4444444-4444-4444-4444-444444444444",
+      "name": "Patagonia",
+      "slug": "patagonia",
+      "logo_url": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=100&q=80"
+    },
+    {
+      "id": "b5555555-5555-5555-5555-555555555555",
+      "name": "Nordic Atelier",
+      "slug": "nordic-atelier",
+      "logo_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=100&q=80"
+    },
+    {
+      "id": "b6666666-6666-6666-6666-666666666666",
+      "name": "Seiko Timepieces",
+      "slug": "seiko",
+      "logo_url": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=100&q=80"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1010101-1111-1111-1111-111111111111",
+      "title": "Minimalist White Leather Sneaker",
+      "slug": "minimalist-white-leather-sneaker",
+      "description": "Crafted from supple Italian Nappa leather, featuring a vulcanized rubber sole and padded collar. Clean architectural silhouette engineered for all-day comfort.",
+      "price": 165.00,
+      "original_price": 210.00,
+      "category_id": "c1111111-1111-1111-1111-111111111111",
+      "brand_id": "b1111111-1111-1111-1111-111111111111",
+      "rating": 4.9,
+      "review_count": 184,
+      "stock": 35,
+      "image_url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["sneakers", "footwear", "white", "leather", "minimalist", "low-top", "clean"],
+      "dominant_colors": [
+        { "hex": "#f8fafc", "name": "Pure White", "ratio": 0.62 },
+        { "hex": "#e2e8f0", "name": "Off White", "ratio": 0.24 },
+        { "hex": "#94a3b8", "name": "Light Slate", "ratio": 0.14 }
+      ],
+      "features": [
+        { "feature_name": "Upper Material", "feature_value": "Italian Full-Grain Nappa" },
+        { "feature_name": "Outsole", "feature_value": "Margom Vulcanized Rubber" },
+        { "feature_name": "Lining", "feature_value": "Vegetable Tanned Calfskin" },
+        { "feature_name": "Origin", "feature_value": "Handmade in Marche, Italy" }
+      ]
+    },
+    {
+      "id": "p1010102-1111-1111-1111-111111111111",
+      "title": "Air Performance Crimson Runner",
+      "slug": "air-performance-crimson-runner",
+      "description": "High-rebound responsive foam running shoe featuring breathable micro-mesh upper, dynamic flywire lockdown, and vivid crimson accents.",
+      "price": 140.00,
+      "original_price": 175.00,
+      "category_id": "c1111111-1111-1111-1111-111111111111",
+      "brand_id": "b2222222-2222-2222-2222-222222222222",
+      "rating": 4.7,
+      "review_count": 312,
+      "stock": 48,
+      "image_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["sneakers", "runner", "red", "crimson", "sportswear", "mesh", "athletic"],
+      "dominant_colors": [
+        { "hex": "#dc2626", "name": "Crimson Red", "ratio": 0.58 },
+        { "hex": "#ffffff", "name": "White", "ratio": 0.28 },
+        { "hex": "#111827", "name": "Black", "ratio": 0.14 }
+      ],
+      "features": [
+        { "feature_name": "Cushioning", "feature_value": "Dual-Density Air Zoom" },
+        { "feature_name": "Weight", "feature_value": "245 grams (Size 9)" },
+        { "feature_name": "Drop", "feature_value": "8mm" },
+        { "feature_name": "Tread", "feature_value": "Waffle High-Abrasion Rubber" }
+      ]
+    },
+    {
+      "id": "p1010103-1111-1111-1111-111111111111",
+      "title": "Retro Suede Streetwear Trainer",
+      "slug": "retro-suede-streetwear-trainer",
+      "description": "Classic 70s archival silhouette updated with rich emerald suede overlays, gum rubber cupsole, and vintage exposed foam tongue.",
+      "price": 115.00,
+      "original_price": 130.00,
+      "category_id": "c1111111-1111-1111-1111-111111111111",
+      "brand_id": "b1111111-1111-1111-1111-111111111111",
+      "rating": 4.6,
+      "review_count": 92,
+      "stock": 19,
+      "image_url": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=400&q=80",
+      "is_featured": false,
+      "visual_tags": ["sneakers", "suede", "black", "gumsole", "skate", "casual", "vintage"],
+      "dominant_colors": [
+        { "hex": "#1e293b", "name": "Black / Dark Slate", "ratio": 0.55 },
+        { "hex": "#d97706", "name": "Gum Caramel", "ratio": 0.30 },
+        { "hex": "#f8fafc", "name": "Off White", "ratio": 0.15 }
+      ],
+      "features": [
+        { "feature_name": "Material", "feature_value": "Silky Pigskin Suede & Canvas" },
+        { "feature_name": "Sole", "feature_value": "Vulcanized Honey Gum" },
+        { "feature_name": "Insole", "feature_value": "Molded Ortholite Footbed" }
+      ]
+    },
+    {
+      "id": "p2020201-2222-2222-2222-222222222222",
+      "title": "Alpine Stormproof Shell Jacket",
+      "slug": "alpine-stormproof-shell-jacket",
+      "description": "3-layer waterproof breathable GORE-TEX Pro membrane jacket with watertight YKK Aquaguard zippers and helmet-compatible storm hood.",
+      "price": 389.00,
+      "original_price": 450.00,
+      "category_id": "c2222222-2222-2222-2222-222222222222",
+      "brand_id": "b4444444-4444-4444-4444-444444444444",
+      "rating": 4.9,
+      "review_count": 140,
+      "stock": 22,
+      "image_url": "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["jacket", "outerwear", "apparel", "waterproof", "black", "technical", "hoodie"],
+      "dominant_colors": [
+        { "hex": "#0f172a", "name": "Deep Midnight Black", "ratio": 0.70 },
+        { "hex": "#334155", "name": "Slate Grey", "ratio": 0.20 },
+        { "hex": "#64748b", "name": "Steel", "ratio": 0.10 }
+      ],
+      "features": [
+        { "feature_name": "Membrane", "feature_value": "3-Layer 28,000mm GORE-TEX Pro" },
+        { "feature_name": "Zippers", "feature_value": "YKK AquaGuard Matte" },
+        { "feature_name": "Pockets", "feature_value": "Two Harness-Compatible Torso" },
+        { "feature_name": "Weight", "feature_value": "410 grams" }
+      ]
+    },
+    {
+      "id": "p2020202-2222-2222-2222-222222222222",
+      "title": "Heavyweight Vintage Denim Jacket",
+      "slug": "heavyweight-vintage-denim-jacket",
+      "description": "14.5oz Japanese selvedge denim trucker jacket featuring double-needle copper stitch details and custom matte gunmetal shank hardware.",
+      "price": 195.00,
+      "original_price": 240.00,
+      "category_id": "c2222222-2222-2222-2222-222222222222",
+      "brand_id": "b1111111-1111-1111-1111-111111111111",
+      "rating": 4.8,
+      "review_count": 87,
+      "stock": 16,
+      "image_url": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=400&q=80",
+      "is_featured": false,
+      "visual_tags": ["jacket", "denim", "blue", "indigo", "outerwear", "vintage", "selvedge", "cotton"],
+      "dominant_colors": [
+        { "hex": "#1d4ed8", "name": "Indigo Blue", "ratio": 0.60 },
+        { "hex": "#3b82f6", "name": "Medium Blue", "ratio": 0.25 },
+        { "hex": "#b45309", "name": "Amber Copper Stitch", "ratio": 0.15 }
+      ],
+      "features": [
+        { "feature_name": "Fabric", "feature_value": "14.5oz Kurabo Mills Selvedge" },
+        { "feature_name": "Dye", "feature_value": "Pure Natural Indigo Rope Dye" },
+        { "feature_name": "Fit", "feature_value": "Relaxed Heritage Trucker" }
+      ]
+    },
+    {
+      "id": "p3030301-3333-3333-3333-333333333333",
+      "title": "Acoustic Pro Wireless Studio Headphones",
+      "slug": "acoustic-pro-wireless-studio-headphones",
+      "description": "High-resolution wireless audiophile headphones with active noise cancellation, beryllium drivers, and memory-foam lambskin ear cushions.",
+      "price": 349.00,
+      "original_price": 399.00,
+      "category_id": "c3333333-3333-3333-3333-333333333333",
+      "brand_id": "b3333333-3333-3333-3333-333333333333",
+      "rating": 4.9,
+      "review_count": 420,
+      "stock": 40,
+      "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["headphones", "audio", "electronics", "black", "gold", "wireless", "over-ear"],
+      "dominant_colors": [
+        { "hex": "#18181b", "name": "Matte Black", "ratio": 0.65 },
+        { "hex": "#eab308", "name": "Gold Accent", "ratio": 0.20 },
+        { "hex": "#71717a", "name": "Zinc", "ratio": 0.15 }
+      ],
+      "features": [
+        { "feature_name": "Driver Size", "feature_value": "40mm Custom Beryllium Dome" },
+        { "feature_name": "Battery Life", "feature_value": "38 Hours with ANC Active" },
+        { "feature_name": "Codecs", "feature_value": "LDAC, AAC, aptX Adaptive" },
+        { "feature_name": "Connectivity", "feature_value": "Bluetooth 5.3 & 3.5mm Analog" }
+      ]
+    },
+    {
+      "id": "p3030302-3333-3333-3333-333333333333",
+      "title": "Minimalist Portable Bluetooth Speaker",
+      "slug": "minimalist-portable-bluetooth-speaker",
+      "description": "Precision-machined anodized aluminum cylinder speaker delivering 360-degree room-filling acoustic sound and IP67 waterproof resistance.",
+      "price": 129.00,
+      "original_price": 159.00,
+      "category_id": "c3333333-3333-3333-3333-333333333333",
+      "brand_id": "b3333333-3333-3333-3333-333333333333",
+      "rating": 4.7,
+      "review_count": 165,
+      "stock": 55,
+      "image_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=400&q=80",
+      "is_featured": false,
+      "visual_tags": ["speaker", "audio", "electronics", "silver", "aluminum", "minimalist", "cylinder"],
+      "dominant_colors": [
+        { "hex": "#94a3b8", "name": "Silver Slate", "ratio": 0.58 },
+        { "hex": "#cbd5e1", "name": "Brushed Aluminum", "ratio": 0.32 },
+        { "hex": "#1e293b", "name": "Dark Charcoal", "ratio": 0.10 }
+      ],
+      "features": [
+        { "feature_name": "Output Power", "feature_value": "2 x 15W Full-Range Drivers" },
+        { "feature_name": "Waterproof Rating", "feature_value": "IP67 Submersible" },
+        { "feature_name": "Battery", "feature_value": "18 Hours Playback" }
+      ]
+    },
+    {
+      "id": "p4040401-4444-4444-4444-444444444444",
+      "title": "Automatic Field Chronograph Watch",
+      "slug": "automatic-field-chronograph-watch",
+      "description": "38mm brushed 316L stainless steel military field watch with deep sunburst black dial, sapphire crystal, and vegetable-tanned Horween leather strap.",
+      "price": 285.00,
+      "original_price": 340.00,
+      "category_id": "c4444444-4444-4444-4444-444444444444",
+      "brand_id": "b6666666-6666-6666-6666-666666666666",
+      "rating": 4.9,
+      "review_count": 210,
+      "stock": 14,
+      "image_url": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["watch", "chronograph", "accessories", "leather", "brown", "black", "timepiece"],
+      "dominant_colors": [
+        { "hex": "#0f172a", "name": "Black Dial", "ratio": 0.45 },
+        { "hex": "#92400e", "name": "Cognac Leather", "ratio": 0.35 },
+        { "hex": "#e2e8f0", "name": "Stainless Steel", "ratio": 0.20 }
+      ],
+      "features": [
+        { "feature_name": "Movement", "feature_value": "Automatic 24-Jewel Calibre NH35" },
+        { "feature_name": "Crystal", "feature_value": "Double-Domed Sapphire with AR" },
+        { "feature_name": "Water Resistance", "feature_value": "100 Meters / 10 ATM" },
+        { "feature_name": "Strap", "feature_value": "20mm Horween Chromexcel Leather" }
+      ]
+    },
+    {
+      "id": "p4040402-4444-4444-4444-444444444444",
+      "title": "Full-Grain Leather Everyday Backpack",
+      "slug": "full-grain-leather-everyday-backpack",
+      "description": "Sleek weatherproof commuter backpack tailored with dedicated padded 16-inch laptop compartment, magnetic quick-access latch, and luggage pass-through.",
+      "price": 220.00,
+      "original_price": 260.00,
+      "category_id": "c4444444-4444-4444-4444-444444444444",
+      "brand_id": "b1111111-1111-1111-1111-111111111111",
+      "rating": 4.8,
+      "review_count": 98,
+      "stock": 25,
+      "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=80",
+      "is_featured": false,
+      "visual_tags": ["backpack", "bag", "accessories", "leather", "tan", "brown", "travel", "commuter"],
+      "dominant_colors": [
+        { "hex": "#78350f", "name": "Chestnut Leather", "ratio": 0.65 },
+        { "hex": "#1e293b", "name": "Gunmetal Hardware", "ratio": 0.20 },
+        { "hex": "#d97706", "name": "Warm Caramel", "ratio": 0.15 }
+      ],
+      "features": [
+        { "feature_name": "Capacity", "feature_value": "20 Liters" },
+        { "feature_name": "Laptop Sleeve", "feature_value": "Suspended Shock-Absorbing 16-inch" },
+        { "feature_name": "Lining", "feature_value": "Recycled Ripstop Poly" }
+      ]
+    },
+    {
+      "id": "p5050501-5555-5555-5555-555555555555",
+      "title": "Sculptural Ceramic Pendant Lamp",
+      "slug": "sculptural-ceramic-pendant-lamp",
+      "description": "Hand-thrown stoneware pendant light with organic fluted silhouette, warm textured matte glaze, and braided brass-accented textile cord.",
+      "price": 175.00,
+      "original_price": 210.00,
+      "category_id": "c5555555-5555-5555-5555-555555555555",
+      "brand_id": "b5555555-5555-5555-5555-555555555555",
+      "rating": 4.9,
+      "review_count": 64,
+      "stock": 18,
+      "image_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["lamp", "lighting", "home", "ceramic", "beige", "warm", "minimalist", "sculptural"],
+      "dominant_colors": [
+        { "hex": "#f5f5f4", "name": "Matte Off-White", "ratio": 0.55 },
+        { "hex": "#d6d3d1", "name": "Warm Stone", "ratio": 0.30 },
+        { "hex": "#ca8a04", "name": "Brushed Brass", "ratio": 0.15 }
+      ],
+      "features": [
+        { "feature_name": "Material", "feature_value": "High-Fire White Stoneware" },
+        { "feature_name": "Socket", "feature_value": "E26/E27 Dimmable Brass Socket" },
+        { "feature_name": "Cord Length", "feature_value": "3.0 Meters Braided Linen" }
+      ]
+    },
+    {
+      "id": "p5050502-5555-5555-5555-555555555555",
+      "title": "Nordic Oak Ergonomic Lounge Chair",
+      "slug": "nordic-oak-ergonomic-lounge-chair",
+      "description": "Solid Scandinavian white oak armchair with continuous curved steam-bent arms and natural bouclé wool upholstery.",
+      "price": 649.00,
+      "original_price": 750.00,
+      "category_id": "c5555555-5555-5555-5555-555555555555",
+      "brand_id": "b5555555-5555-5555-5555-555555555555",
+      "rating": 5.0,
+      "review_count": 45,
+      "stock": 8,
+      "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+      "thumbnail_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=80",
+      "is_featured": true,
+      "visual_tags": ["chair", "furniture", "home", "wood", "oak", "cream", "boucle", "armchair"],
+      "dominant_colors": [
+        { "hex": "#fef3c7", "name": "Cream Boucle", "ratio": 0.50 },
+        { "hex": "#b45309", "name": "Honey Oak", "ratio": 0.35 },
+        { "hex": "#78716c", "name": "Warm Grey", "ratio": 0.15 }
+      ],
+      "features": [
+        { "feature_name": "Frame", "feature_value": "FSC-Certified Solid European White Oak" },
+        { "feature_name": "Upholstery", "feature_value": "Danish Textured Bouclé (Wool/Cotton)" },
+        { "feature_name": "Dimensions", "feature_value": "82cm H x 76cm W x 84cm D" }
+      ]
+    }
+  ]
+}
