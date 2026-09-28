@@ -2,7 +2,8 @@
 Core application settings and configuration management.
 """
 
-from typing import List
+from pathlib import Path
+from typing import List, Union
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field, field_validator
 
@@ -21,7 +22,7 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
 
     # CORS
-    CORS_ORIGINS: List[str] = [
+    CORS_ORIGINS: Union[List[str], str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
@@ -36,6 +37,12 @@ class Settings(BaseSettings):
     STORAGE_BUCKET_QUERIES: str = "visual-search-queries"
     LOCAL_STORAGE_PATH: str = "./uploads"
 
+    # External Catalog Provider Settings
+    EXTERNAL_PRODUCT_PROVIDER: str = "real_catalog"
+    EBAY_CLIENT_ID: str = ""
+    EBAY_CLIENT_SECRET: str = ""
+    EBAY_ENVIRONMENT: str = "SANDBOX"
+
     # Visual Search Engine Settings
     VISUAL_SEARCH_PROVIDER: str = "prototype"
     MIN_SIMILARITY_THRESHOLD: float = 0.35
@@ -49,7 +56,11 @@ class Settings(BaseSettings):
         return v
 
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=(
+            str(Path(__file__).resolve().parent.parent.parent / ".env"),
+            ".env",
+            "backend/.env",
+        ),
         env_file_encoding="utf-8",
         case_sensitive=True,
         extra="ignore"

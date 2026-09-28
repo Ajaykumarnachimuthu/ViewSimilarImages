@@ -204,6 +204,28 @@ class ProductRepository:
         categories = await self._category_repo.list_categories()
         brands = await self._category_repo.list_brands()
 
+        client = get_supabase_client()
+        if client:
+            try:
+                res = client.table("products").select("price, visual_tags").execute()
+                if res.data:
+                    prices = [float(r["price"]) for r in res.data if r.get("price") is not None]
+                    min_p = min(prices) if prices else 0.0
+                    max_p = max(prices) if prices else 1000.0
+                    all_tags = set()
+                    for r in res.data:
+                        for t in (r.get("visual_tags") or []):
+                            all_tags.add(t)
+                    return CatalogFacetsResponse(
+                        min_catalog_price=min_p,
+                        max_catalog_price=max_p,
+                        available_tags=sorted(list(all_tags)),
+                        categories=categories,
+                        brands=brands,
+                    )
+            except Exception as exc:
+                logger.warning("Supabase facet query error (%s), using local cache", exc)
+
         prices = [p.get("price", 0) for p in self._products_cache.values()]
         min_p = min(prices) if prices else 0.0
         max_p = max(prices) if prices else 1000.0

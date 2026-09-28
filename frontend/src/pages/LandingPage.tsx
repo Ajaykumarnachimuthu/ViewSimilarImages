@@ -48,6 +48,8 @@ export const LandingPage: React.FC = () => {
         onSearchSubmit={handleSearchSubmit}
         onOpenVisualSearch={() => navigate('/visual-search')}
         onScrollToCatalog={() => navigate('/discover')}
+        products={featuredProducts}
+        onSelectProduct={(p) => navigate(`/product/${p.id}`)}
       />
 
       {/* 2. Product Discovery Methods */}

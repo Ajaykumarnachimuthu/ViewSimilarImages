@@ -100,16 +100,23 @@ ALTER TABLE products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE product_features ENABLE ROW LEVEL SECURITY;
 ALTER TABLE product_visual_embeddings ENABLE ROW LEVEL SECURITY;
 
--- Anonymous and Authenticated users have read access
-CREATE POLICY "Public categories read" ON categories FOR SELECT USING (true);
-CREATE POLICY "Public brands read" ON brands FOR SELECT USING (true);
-CREATE POLICY "Public products read" ON products FOR SELECT USING (true);
-CREATE POLICY "Public product features read" ON product_features FOR SELECT USING (true);
-CREATE POLICY "Public visual embeddings read" ON product_visual_embeddings FOR SELECT USING (true);
+-- Drop existing policies if re-running
+DROP POLICY IF EXISTS "Public categories read" ON categories;
+DROP POLICY IF EXISTS "Public brands read" ON brands;
+DROP POLICY IF EXISTS "Public products read" ON products;
+DROP POLICY IF EXISTS "Public product features read" ON product_features;
+DROP POLICY IF EXISTS "Public visual embeddings read" ON product_visual_embeddings;
 
--- Service role has write access
-CREATE POLICY "Service role write categories" ON categories FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY "Service role write brands" ON brands FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY "Service role write products" ON products FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY "Service role write product_features" ON product_features FOR ALL USING (auth.role() = 'service_role');
-CREATE POLICY "Service role write embeddings" ON product_visual_embeddings FOR ALL USING (auth.role() = 'service_role');
+DROP POLICY IF EXISTS "Catalog write categories" ON categories;
+DROP POLICY IF EXISTS "Catalog write brands" ON brands;
+DROP POLICY IF EXISTS "Catalog write products" ON products;
+DROP POLICY IF EXISTS "Catalog write product_features" ON product_features;
+DROP POLICY IF EXISTS "Catalog write embeddings" ON product_visual_embeddings;
+
+-- Public and service read & write access
+CREATE POLICY "Public categories access" ON categories FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Public brands access" ON brands FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Public products access" ON products FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Public product features access" ON product_features FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Public visual embeddings access" ON product_visual_embeddings FOR ALL USING (true) WITH CHECK (true);
+
