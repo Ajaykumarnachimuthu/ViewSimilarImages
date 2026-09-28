@@ -54,5 +54,11 @@ graph LR
 ## 3. Database & Storage Security
 
 - **Parameterized Queries:** All database interactions use Supabase client / PostgreSQL prepared statements, preventing SQL injection.
-- **Row Level Security (RLS):** Read-only access for anonymous web clients; mutating operations (insert, update, delete) restricted to authenticated service roles.
-- **Error Information Leakage Prevention:** Stack traces and internal database schema names are suppressed in production mode. Clean standardized error envelopes (`error`, `message`, `code`) are returned.
+- **Row Level Security (RLS) Architecture:**
+  - **Browser / Client Layer:** Restricted strictly to `SELECT` operations using the public Supabase `anon` key.
+  - **Public Write Prohibition:** No public or anonymous `INSERT`, `UPDATE`, or `DELETE` policies exist. Mutating operations attempted with public keys are rejected by PostgreSQL RLS.
+  - **Backend Ingestion Layer:** Privileged synchronization runs via backend `SUPABASE_SERVICE_ROLE_KEY`, which bypasses RLS safely within server-side scripts only.
+- **Credential Isolation:**
+  - Service-role secrets and external API credentials (e.g. eBay client secrets) reside strictly in `backend/.env`.
+  - The frontend client bundle contains zero database secret keys, service roles, or provider credentials.
+- **Error Information Leakage Prevention:** Stack traces and internal database schema names are suppressed in production mode. Standardized JSON error envelopes (`error`, `message`, `code`) are returned.

@@ -30,7 +30,8 @@ class Settings(BaseSettings):
 
     # Supabase Settings (Optional for standalone local testing)
     SUPABASE_URL: str = ""
-    SUPABASE_KEY: str = ""
+    SUPABASE_KEY: str = ""  # Public anon key for read-only access
+    SUPABASE_SERVICE_ROLE_KEY: str = ""  # Privileged service role key for backend catalog ingestion
 
     # Storage Settings
     STORAGE_BUCKET_PRODUCTS: str = "product-catalog-images"

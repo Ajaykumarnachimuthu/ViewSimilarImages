@@ -40,6 +40,8 @@ erDiagram
 
     PRODUCTS {
         uuid id PK
+        varchar source
+        varchar external_product_id
         varchar title
         varchar slug UK
         text description

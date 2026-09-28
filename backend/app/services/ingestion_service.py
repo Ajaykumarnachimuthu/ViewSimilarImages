@@ -11,7 +11,7 @@ from typing import Dict, List, Optional, Tuple
 import httpx
 from PIL import Image
 
-from backend.app.db.supabase_client import get_supabase_client
+from backend.app.db.supabase_client import get_supabase_client, get_supabase_admin_client
 from backend.app.services.product_providers import (
     ExternalProductDTO,
     get_external_product_provider,
@@ -104,7 +104,7 @@ class IngestionService:
             report.errors.append(f"Provider fetch error: {exc}")
             return report
 
-        client = get_supabase_client()
+        client = get_supabase_admin_client() or get_supabase_client()
         if not client:
             report.errors.append("Supabase client is not connected. Ingestion requires database access.")
             return report
@@ -161,6 +161,8 @@ class IngestionService:
 
                 product_record = {
                     "id": prod_id,
+                    "source": dto.source,
+                    "external_product_id": str(dto.external_id),
                     "title": dto.title,
                     "slug": slug,
                     "description": dto.description,
@@ -178,7 +180,17 @@ class IngestionService:
                     "dominant_colors": dominant_colors,
                 }
 
-                client.table("products").upsert(product_record, on_conflict="slug").execute()
+                try:
+                    client.table("products").upsert(product_record, on_conflict="slug").execute()
+                except Exception as upsert_exc:
+                    if "external_product_id" in str(upsert_exc) or "source" in str(upsert_exc):
+                        logger.warning("external identity columns not yet applied in Supabase. Falling back to base product schema.")
+                        product_record.pop("source", None)
+                        product_record.pop("external_product_id", None)
+                        client.table("products").upsert(product_record, on_conflict="slug").execute()
+                    else:
+                        raise upsert_exc
+
                 report.products_inserted += 1
 
                 # Upsert Features

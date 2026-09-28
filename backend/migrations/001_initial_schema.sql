@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS brands (
 -- ------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS products (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    source VARCHAR(50) DEFAULT 'catalog',
+    external_product_id VARCHAR(255),
     title VARCHAR(255) NOT NULL,
     slug VARCHAR(280) UNIQUE NOT NULL,
     description TEXT NOT NULL,
@@ -53,6 +55,10 @@ CREATE TABLE IF NOT EXISTS products (
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- Idempotent column additions for pre-existing tables
+ALTER TABLE products ADD COLUMN IF NOT EXISTS source VARCHAR(50);
+ALTER TABLE products ADD COLUMN IF NOT EXISTS external_product_id VARCHAR(255);
 
 -- ------------------------------------------------------------------------------
 -- 4. PRODUCT FEATURES TABLE (E-Commerce Specifications)
@@ -85,6 +91,7 @@ CREATE INDEX IF NOT EXISTS idx_products_price ON products(price);
 CREATE INDEX IF NOT EXISTS idx_products_rating ON products(rating DESC);
 CREATE INDEX IF NOT EXISTS idx_products_featured ON products(is_featured);
 CREATE INDEX IF NOT EXISTS idx_products_visual_tags ON products USING gin(visual_tags);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_products_source_ext_id ON products(source, external_product_id) WHERE external_product_id IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_product_features_prod ON product_features(product_id);
 CREATE INDEX IF NOT EXISTS idx_product_features_kv ON product_features(feature_name, feature_value);
 
@@ -93,6 +100,7 @@ CREATE INDEX IF NOT EXISTS idx_products_fts ON products USING gin(to_tsvector('e
 
 -- ------------------------------------------------------------------------------
 -- 7. ROW LEVEL SECURITY (RLS) POLICIES
+-- Strict read-only public access. Backend writes must use service-role key.
 -- ------------------------------------------------------------------------------
 ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
 ALTER TABLE brands ENABLE ROW LEVEL SECURITY;
@@ -100,12 +108,12 @@ ALTER TABLE products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE product_features ENABLE ROW LEVEL SECURITY;
 ALTER TABLE product_visual_embeddings ENABLE ROW LEVEL SECURITY;
 
--- Drop existing policies if re-running
-DROP POLICY IF EXISTS "Public categories read" ON categories;
-DROP POLICY IF EXISTS "Public brands read" ON brands;
-DROP POLICY IF EXISTS "Public products read" ON products;
-DROP POLICY IF EXISTS "Public product features read" ON product_features;
-DROP POLICY IF EXISTS "Public visual embeddings read" ON product_visual_embeddings;
+-- Drop any previous or overly permissive policies
+DROP POLICY IF EXISTS "Public categories access" ON categories;
+DROP POLICY IF EXISTS "Public brands access" ON brands;
+DROP POLICY IF EXISTS "Public products access" ON products;
+DROP POLICY IF EXISTS "Public product features access" ON product_features;
+DROP POLICY IF EXISTS "Public visual embeddings access" ON product_visual_embeddings;
 
 DROP POLICY IF EXISTS "Catalog write categories" ON categories;
 DROP POLICY IF EXISTS "Catalog write brands" ON brands;
@@ -113,10 +121,39 @@ DROP POLICY IF EXISTS "Catalog write products" ON products;
 DROP POLICY IF EXISTS "Catalog write product_features" ON product_features;
 DROP POLICY IF EXISTS "Catalog write embeddings" ON product_visual_embeddings;
 
--- Public and service read & write access
-CREATE POLICY "Public categories access" ON categories FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Public brands access" ON brands FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Public products access" ON products FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Public product features access" ON product_features FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Public visual embeddings access" ON product_visual_embeddings FOR ALL USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Public categories read" ON categories;
+DROP POLICY IF EXISTS "Public brands read" ON brands;
+DROP POLICY IF EXISTS "Public products read" ON products;
+DROP POLICY IF EXISTS "Public product features read" ON product_features;
+DROP POLICY IF EXISTS "Public visual embeddings read" ON product_visual_embeddings;
 
+-- Public read-only policies (anon & authenticated roles can SELECT)
+CREATE POLICY "Public categories read"
+ON categories
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
+CREATE POLICY "Public brands read"
+ON brands
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
+CREATE POLICY "Public products read"
+ON products
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
+CREATE POLICY "Public product features read"
+ON product_features
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
+CREATE POLICY "Public visual embeddings read"
+ON product_visual_embeddings
+FOR SELECT
+TO anon, authenticated
+USING (true);

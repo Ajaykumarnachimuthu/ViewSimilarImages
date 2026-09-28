@@ -143,3 +143,53 @@ sequenceDiagram
 4. **Zero Frontend Business Logic**: The frontend is purely presentational and interactional. Filtering logic, candidate scoring, and similarity thresholds are computed on the backend.
 5. **Multi-Device Responsive Standard**: Full viewport spanning (`100vw`) with zero horizontal overflow, 4-column desktop, 3-column tablet, 2-column mobile product grids, and 1-tap mobile filter drawer.
 
+---
+
+## 5. External Product Data Providers & Ingestion Pipeline
+
+To ensure the application operates on verified, scalable external catalog data rather than static seed files, the system incorporates an extensible product provider subsystem:
+
+```mermaid
+graph TD
+    subgraph Providers["External Product Providers"]
+        Base["ExternalProductProvider (ABC)"]
+        RealCat["RealCatalogProductProvider (Platzi Fake Store API)"]
+        Ebay["EbayProductProvider (eBay Browse API OAuth)"]
+    end
+
+    subgraph Ingestion["Ingestion Pipeline"]
+        IngestService["CatalogIngestionService"]
+        Vision["PrototypeVisualSearchProvider"]
+        AdminDB["Supabase Admin Client (Service Role Key)"]
+    end
+
+    Base --> RealCat
+    Base --> Ebay
+    RealCat -->|ExternalProductDTO| IngestService
+    Ebay -->|ExternalProductDTO| IngestService
+    IngestService -->|Download & Extract| Vision
+    Vision -->|dHash + HSV Histograms| IngestService
+    IngestService -->|Privileged Upsert| AdminDB
+```
+
+### 5.1 Provider Verification & Provenance
+1. **Real Online Catalog Provider (`real_catalog_provider.py` - Option B):**
+   - **External Provider:** Platzi Fake Store API
+   - **Official Endpoint:** `https://api.escuelajs.co/api/v1/products`
+   - **Authentication:** None required (Public open REST endpoint)
+   - **Data Retrieved:** Live product items with titles, descriptions, prices, categories, and image URLs.
+   - **Image Source:** Remote photography hosted on Cloudinary and Imgur CDNs.
+   - **Import Method:** HTTP GET via asynchronous `httpx.AsyncClient` with custom User-Agent.
+   - **Rate Limit:** Open API fair use (~100 req/min).
+   - **Current Status:** Verified and active. 30 products successfully ingested into Supabase.
+
+2. **eBay Browse API Provider (`ebay_provider.py` - Option A):**
+   - **External Provider:** eBay Developer Program (Browse API v1)
+   - **Official Endpoints:**
+     - Auth: `https://api.ebay.com/identity/v1/oauth2/token` (or sandbox)
+     - Search: `https://api.ebay.com/buy/browse/v1/item_summary/search`
+   - **Authentication:** OAuth 2.0 Client Credentials Grant (`grant_type=client_credentials`, Basic Auth).
+   - **Token Management:** In-memory caching with automatic refresh when remaining validity is under 60 seconds.
+   - **Rate Limits & Errors:** Handles HTTP 429 rate limits, HTTP 401 token invalidation, and raises explicit configuration requirements if credentials are absent.
+   - **Current Status:** Staged and verified in unit tests. Requires `EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` in `backend/.env`.
+

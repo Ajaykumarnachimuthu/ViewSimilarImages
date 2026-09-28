@@ -17,6 +17,8 @@ class ProductFeatureSchema(BaseModel):
 
 
 class ProductBase(BaseModel):
+    source: Optional[str] = Field("catalog", max_length=50)
+    external_product_id: Optional[str] = Field(None, max_length=255)
     title: str = Field(..., max_length=255)
     slug: str = Field(..., max_length=280)
     description: str
